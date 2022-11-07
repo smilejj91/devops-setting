@@ -1,0 +1,19 @@
+@                  3600 SOA   127.0.0.1. (
+                              127.0.0.1.                 ; address of responsible party
+                              2022040801                 ; serial number
+                              3600                       ; refresh period
+                              600                        ; retry period
+                              604800                     ; expire time
+                              1800                       ; minimum ttl
+                              )
+harbor      		IN  A 192.168.10.10
+gitlab          IN  A 192.168.10.10
+*.pages         IN  A 192.168.10.10
+
+wiki            IN  A 192.168.10.10
+redmine         IN  A 192.168.10.10
+b2b-ci          IN  A 192.168.10.10
+b2b-repo        IN  A 192.168.10.10
+prometheus      IN  A 192.168.10.10
+grafana         IN  A 192.168.10.10
+dashboard       IN  A 192.168.10.10

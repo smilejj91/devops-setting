@@ -1,0 +1,14 @@
+version: '3.2'
+# web container
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    restart: always
+    container_name: jenkins-cont
+    user: root
+    ports:
+      - "8080:8080" # jenkins port
+    volumes:
+      - type : "bind"
+        source : "${PWD}/jenkins"
+        target : "/var/jenkins_home"

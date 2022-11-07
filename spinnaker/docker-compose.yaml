@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  halyard:
+    container_name: halyard
+    restart: always
+    image: gcr.io/spinnaker-marketplace/halyard:stable
+    volumes:
+      - ./.kube:/home/spinnaker/.kube
+      - ./.hal:/home/spinnaker/.hal
+    ports:
+      - 8084:8084
+      - 6000:9000

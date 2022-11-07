@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    container_name: gitlab-cont
+    hostname: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.55.206:4000'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222 
+    ports:
+      - '4000:4000'
+      - '2222:22'
+    volumes:
+      - './gitlab-data/config:/etc/gitlab'
+      - './gitlab-data/logs:/var/log/gitlab'
+      - './gitlab-data/data:/var/opt/gitlab'
+      - './gitlab-data/backups:/var/opt/gitlab/backups'

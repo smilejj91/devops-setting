@@ -1,0 +1,16 @@
+version: '3'
+services:
+  minio:
+    image: quay.io/minio/minio
+    command: server /data --console-address ":9001"
+    container_name: minio-cont
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: tmaxos123!
+    restart: always
+    shm_size: '1gb'
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data:/data
