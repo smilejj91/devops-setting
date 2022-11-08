@@ -47,7 +47,16 @@ $ hal config artifact github enable
 $ echo $TOKEN > $TOKEN_FILE
 $ ARTIFACT_ACCOUNT_NAME=my-github-artifact-account
 $ hal config artifact github account add $ARTIFACT_ACCOUNT_NAME --token-file $TOKEN_FILE
-``` 
+```
+
+  - Jenkins setup
+```bash
+# https://spinnaker.io/docs/setup/other_config/ci/jenkins/
+
+$ hal config ci jenkins enable
+$ hal config ci jenkins master add $JENKINS_ACCOUNT_NAME --address http://{jekins IP}:{jenkins port} --csrf true --username {jenkins username} --password ${jenkins user api token}
+$ hal config edit --timezone Asia/Seoul
+```
   - Install spinnaker
 ```bash
 # https://spinnaker.io/docs/setup/install/deploy/
