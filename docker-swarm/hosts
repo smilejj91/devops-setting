@@ -1,0 +1,6 @@
+[managers]
+manager ansible_host=10.202.10.2 ansible_user=deploy
+
+[nodes]
+node01 ansible_host=10.202.10.3 ansible_user=deploy
+node02 ansible_host=10.202.10.4 ansible_user=deploy

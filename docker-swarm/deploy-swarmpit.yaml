@@ -1,0 +1,6 @@
+- hosts: managers
+  tasks:
+    - name: create stack compose yaml file by template
+      template: src=swarmpit.yaml dest=/home/deploy/swarmpit.yaml
+    - name: deploy ctma service using docker stack
+      shell: docker stack deploy -c swarmpit.yaml swarmpit

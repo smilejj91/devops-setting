@@ -1,0 +1,26 @@
+- hosts: managers
+  tasks:
+    - name: initialize the cluster
+      shell: docker swarm init >> docker_swarm_init.txt
+      args:
+        chdir: $HOME
+        creates: docker_swarm_init.txt
+
+- hosts: managers
+  gather_facts: false
+  tasks:
+    - name: get join command
+      shell: docker swarm join-token worker --quiet
+      register: token
+  
+    - name: set join command
+      set_fact:
+        worker_token: "{{ token.stdout_lines[0] }}"
+  
+- hosts: nodes
+  tasks:
+    - name: join cluster
+      shell: "docker swarm join --token {{ hostvars['manager'].worker_token}} {{ hostvars['manager'].ansible_host }}:2377 >> node_joined.txt"
+      args:
+        chdir: $HOME
+        creates: node_joined.txt
