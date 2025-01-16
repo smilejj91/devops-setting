@@ -8,4 +8,6 @@
 $ docker compose up -d
 ```
 
+### plugin install
+
 
